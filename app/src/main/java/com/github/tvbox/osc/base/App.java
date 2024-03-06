@@ -1,5 +1,4 @@
 package com.github.tvbox.osc.base;
-
 import android.app.Activity;
 import androidx.multidex.MultiDexApplication;
 import com.github.catvod.crawler.JsLoader;
@@ -67,6 +66,11 @@ public class App extends MultiDexApplication {
         if (!Hawk.contains(HawkConfig.PLAY_TYPE)) {
             Hawk.put(HawkConfig.PLAY_TYPE, 1);
         }
+    }
+    private void initParams() {
+        // Hawk
+        Hawk.init(this).build();
+        Hawk.put(HawkConfig.DEBUG_OPEN, false);
         if (!Hawk.contains(HawkConfig.IJK_CODEC)) {
             Hawk.put(HawkConfig.IJK_CODEC, "硬解码");
         } 
