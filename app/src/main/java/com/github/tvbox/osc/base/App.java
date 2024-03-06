@@ -69,15 +69,19 @@ public class App extends MultiDexApplication {
         }
     }
 
+        private void initParams() {
+        // Hawk
+        Hawk.init(this).build();
+        Hawk.put(HawkConfig.DEBUG_OPEN, false);
+        if (!Hawk.contains(HawkConfig.IJK_CODEC)) {
+        Hawk.put(HawkConfig.IJK_CODEC, "硬解码");
+        }
+    }
+
     public static App getInstance() {
         return instance;
     }
 
-    @Override
-    public void onTerminate() {
-        super.onTerminate();
-        JsLoader.load();
-    }
 
 
     private VodInfo vodInfo;
